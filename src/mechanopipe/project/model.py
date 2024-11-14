@@ -14,6 +14,7 @@ class MechanoPipeProject(BaseModel):
 
     root_path: Path
     preprocessing_runs: list[PreprocessingRun]
+    pipeline_version: str
 
     @field_validator("root_path")
     @classmethod
@@ -45,11 +46,14 @@ class MechanoPipeSample(BaseModel):
         The name for the sample. Ideally this should be unique.
     voxel_size_um : tuple[float, float, float]
         The voxel size in microns.
+    pipeline_version : str
+        The version of mechanopipe used to generate this config.
     """
 
     raw_data_path: Path
     sample_name: str
     voxel_size_um: tuple[float, float, float]
+    pipeline_version: str
 
     def to_json_file(self, file_path: str, indent: int = 2) -> None:
         """Save the model as a JSON file."""

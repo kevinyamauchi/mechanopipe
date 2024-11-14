@@ -18,6 +18,7 @@ from mechanopipe.constants import (
 )
 from mechanopipe.project.model import MechanoPipeSample
 from mechanopipe.project.utils import validate_project_table
+from mechanopipe.utils import get_pipeline_version
 
 
 def initialize_project_from_table(
@@ -121,7 +122,10 @@ def initialize_sample(
 
     # make the sample model
     sample_model = MechanoPipeSample(
-        raw_data_path=file_path, sample_name=sample_name, voxel_size_um=voxel_size_um
+        raw_data_path=file_path,
+        sample_name=sample_name,
+        voxel_size_um=voxel_size_um,
+        pipeline_version=get_pipeline_version,
     )
 
     # write the sample model
