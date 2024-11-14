@@ -1,5 +1,6 @@
 """A model for a mechanopipe project."""
 
+import json
 from os import PathLike
 from pathlib import Path
 
@@ -26,6 +27,12 @@ class MechanoPipeProject(BaseModel):
             raise FileNotFoundError(error_message)
         return v
 
+    def to_json_file(self, file_path: str, indent: int = 2) -> None:
+        """Save the model as a JSON file."""
+        with open(file_path, "w") as f:
+            # serialize the model
+            json.dump(self.model_dump(), f, indent=indent)
+
 
 class MechanoPipeSample(BaseModel):
     """Model representing a mechanopipe sample.
@@ -43,3 +50,9 @@ class MechanoPipeSample(BaseModel):
     raw_data_path: Path
     sample_name: str
     voxel_size_um: tuple[float, float, float]
+
+    def to_json_file(self, file_path: str, indent: int = 2) -> None:
+        """Save the model as a JSON file."""
+        with open(file_path, "w") as f:
+            # serialize the model
+            json.dump(self.model_dump(), f, indent=indent)
