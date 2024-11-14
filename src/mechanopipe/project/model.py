@@ -25,3 +25,21 @@ class MechanoPipeProject(BaseModel):
             error_message = f"The root path '{v}' does not exist."
             raise FileNotFoundError(error_message)
         return v
+
+
+class MechanoPipeSample(BaseModel):
+    """Model representing a mechanopipe sample.
+
+    Parameters
+    ----------
+    raw_data_path : Path
+        The absolute path to the raw data file.
+    sample_name : str
+        The name for the sample. Ideally this should be unique.
+    voxel_size_um : tuple[float, float, float]
+        The voxel size in microns.
+    """
+
+    raw_data_path: Path
+    sample_name: str
+    voxel_size_um: tuple[float, float, float]
