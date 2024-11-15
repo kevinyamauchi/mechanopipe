@@ -41,6 +41,10 @@ dependencies = [
     "typer"
 ]
 
+# CLI
+[project.scripts]
+mechanopipe = "mechanopipe._cli.main:app"
+
 # https://peps.python.org/pep-0621/#dependencies-optional-dependencies
 # "extras" (e.g. for `pip install .[test]`)
 [project.optional-dependencies]
